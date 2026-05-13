@@ -1,0 +1,122 @@
+:root {
+  --primary: #0b1f4d;
+  --primary-2: #102b6b;
+  --accent: #ffd200;
+  --accent-2: #ffb703;
+  --bg: #f5f7fb;
+  --text: #1a1a1a;
+  --white: #ffffff;
+  --success: #16a34a;
+  --danger: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top right, #fef9c3, #f5f7fb 25%, #eef2ff 70%);
+  color: var(--text);
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-2));
+  color: var(--white);
+}
+
+.sidebar .brand {
+  font-weight: 700;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 0.5rem;
+  margin: 0.2rem 0.75rem;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+}
+
+.main-content {
+  min-height: 100vh;
+}
+
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.page-card {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: 0.85rem;
+  box-shadow: 0 8px 18px rgba(11, 31, 77, 0.08);
+}
+
+.kpi-card {
+  border-left: 6px solid var(--accent);
+  background: linear-gradient(180deg, #ffffff, #fffef2);
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-2);
+  border-color: var(--primary-2);
+}
+
+.btn-warning {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #111827;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-overlay.show {
+  display: flex;
+}
+
+.table-responsive {
+  max-height: 65vh;
+}
+
+.lang-btn {
+  min-width: 90px;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+}

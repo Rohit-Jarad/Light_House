@@ -1,0 +1,3 @@
+userId,name,username,password,role,phone,isActive,createdAt
+U001,Admin User,admin,admin123,Admin,9922556171,true,2026-05-01T10:00:00Z
+U002,Staff User,staff,staff123,Staff,9922556172,true,2026-05-01T10:00:00Z

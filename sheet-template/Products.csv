@@ -1,0 +1,2 @@
+productId,productName,category,price,stock,vendorId,description,isDeleted,deletedAt,createdAt
+PRD-1001,Copper Wire 1.5mm,Wiring,1200,75,VND-1001,FR grade,false,,2026-05-01T10:00:00Z

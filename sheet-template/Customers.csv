@@ -1,0 +1,2 @@
+customerId,customerName,phone,address,isDeleted,deletedAt,createdAt
+CST-1001,Rahul Patil,9876543210,Baramati,false,,2026-05-01T10:00:00Z
