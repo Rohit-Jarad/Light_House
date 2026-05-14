@@ -209,10 +209,17 @@ function reportSummary_() {
   const payments = readAll_("Payments");
 
   const monthlyRevenue = bills
-    .filter((b) => (b.billDate || "").slice(0, 7) === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM"))
-    .reduce((sum, b) => sum + Number(b.total || 0), 0);
+  .filter((b) => {
+    const dateStr = Utilities.formatDate(new Date(b.billDate), Session.getScriptTimeZone(), "yyyy-MM");
+    return dateStr === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM");
+  })
+  .reduce((sum, b) => sum + Number(b.total || 0), 0);
+
   const dailyRevenue = bills
-    .filter((b) => (b.billDate || "").slice(0, 10) === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd"))
+  .filter((b) => {
+    const dateStr = Utilities.formatDate(new Date(b.billDate), Session.getScriptTimeZone(), "yyyy-MM-dd");
+    return dateStr === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd");
+  })
     .reduce((sum, b) => sum + Number(b.total || 0), 0);
   const weekAgo = new Date();
   weekAgo.setDate(weekAgo.getDate() - 7);
@@ -220,7 +227,8 @@ function reportSummary_() {
     .filter((b) => new Date(b.billDate || "2000-01-01").getTime() >= weekAgo.getTime())
     .reduce((sum, b) => sum + Number(b.total || 0), 0);
   const yearlyRevenue = bills
-    .filter((b) => (b.billDate || "").slice(0, 4) === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy"))
+  .filter((b) => (b.billDate || "").slice(0, 4) === Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy"))
+  .reduce((sum, b) => sum + Number(b.total || 0), 0);
     .reduce((sum, b) => sum + Number(b.total || 0), 0);
   const pendingPayments = bills
     .filter((b) => String(b.paymentStatus).toLowerCase() !== "paid")
@@ -245,7 +253,9 @@ function reportSummary_() {
 function buildMonthlySales_(bills) {
   const map = {};
   bills.forEach((b) => {
-    const m = (b.billDate || "").slice(0, 7) || "Unknown";
+    const m = b.billDate
+  ? Utilities.formatDate(new Date(b.billDate), Session.getScriptTimeZone(), "yyyy-MM")
+  : "Unknown";
     map[m] = (map[m] || 0) + Number(b.total || 0);
   });
   return Object.keys(map).sort().map((k) => ({ month: k, total: map[k] }));
